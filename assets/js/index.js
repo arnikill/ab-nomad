@@ -1,39 +1,81 @@
-const spollersArray = document.querySelectorAll(`[data-spollers]`);
-if(spollersArray.length > 0){
-    const spollersRegular = Array.from(spollersArray).filter(function(item, index, self) {
-        return !item.dataset.spollers.split(",")[0];
-    });
-    if(spollersRegular.length > 0){
-        initSpollers(spollersRegular);
+// Variables
+const facades = document.querySelector('.facades')
+const interiors = document.querySelector('.interiors')
+
+const spheres_tab = document.querySelectorAll('.spheres-tab')
+const spheres_tabscontent = document.querySelectorAll('.spheres-tabscontent')
+
+const glide__slides = document.querySelector('.glide__slides')
+
+const test = document.querySelector('.test')
+
+
+// Funtions
+let load_facades_interiors = (e) => {
+    for (let i = 1; i <= 16; i++) {
+        let facade = `<div class="facade">
+        <a href="/assets/img/facades/facade${String(i).padStart(2, '0')}.jpg">
+            <img src="/assets/img/facades/facade${String(i).padStart(2, '0')}.jpg" alt="facade">
+        </a>
+    </div>`
+        facades.innerHTML += facade
     }
 
-    const spollersMedia = Array.from(spollersArray).filter(function(item, index, self) {
-        return !item.dataset.spollers.split(",")[0];
-    });
-    
-    if(spollersMedia.length > 0){
-        const breakpointsArray = [];
-        spollersMedia.forEach(item =>{
-            const params = item.dataset.spollers;
-            const breakpoint = {};
-            const paramsArray = params.split(",");
-            breakpoint.value = paramsArray[0];
-            breakpoint.type = paramsArray[1] ? paramsArray[1].trim() : "max";
-            breakpoint.item = item;
-            breakpointsArray.push(breakpoint);
-        });
-
-
-    let mediaQueries = breakpointsArray.map(function (item){
-        return '(' + item.type + "-width" + item.value + "px)," + item.value + ',' + item.type;
-    });
-    mediaQueries = mediaQueries.filter(function (item, index, self){
-        return self.indexOf(item) === index;
-    });
-    
-    mediaQueries.forEach(breakpoint =>{
-        const paramsArray = breakpoint.split(",");
-        co
-    })
+    for (let i = 1; i <= 3; i++) {
+        let interior = `<div class="interior">
+        <a href="/assets/img/interiors/interior${String(i).padStart(2, '0')}.jpg">
+            <img src="/assets/img/interiors/interior${String(i).padStart(2, '0')}.jpg" alt="interior">
+        </a>
+    </div>`
+        interiors.innerHTML += interior
     }
 }
+
+let change_sphere = (e) => {
+    spheres_tab.forEach(el => {
+        el.classList.toggle("active");
+    })
+    spheres_tabscontent.forEach(el => {
+        el.classList.toggle("active");
+    })
+}
+
+let load_bricks = (e) => {
+    for (let i = 1; i <= 17; i += 3) {
+        let slide = `<li class="glide__slide">
+    <div>
+        <a href="/assets/img/bricks/brick${String(i).padStart(2, '0')}.jpg">
+            <img src="/assets/img/bricks/brick${String(i).padStart(2, '0')}.jpg" alt="brick">
+        </a>
+    </div>
+    <div>
+        <a href="/assets/img/bricks/brick${String(i + 1).padStart(2, '0')}.jpg">
+            <img src="/assets/img/bricks/brick${String(i + 1).padStart(2, '0')}.jpg" alt="brick">
+        </a>
+    </div>
+    <div>
+        <a href="/assets/img/bricks/brick${String(i + 2).padStart(2, '0')}.jpg">
+            <img src="/assets/img/bricks/brick${String(i + 2).padStart(2, '0')}.jpg" alt="brick">
+        </a>
+    </div>
+</li>`
+        glide__slides.innerHTML += slide
+    }
+}
+
+
+// Event Listeners
+spheres_tab.forEach(el => {
+    el.addEventListener("click", change_sphere)
+});
+
+document.addEventListener("DOMContentLoaded", load_facades_interiors);
+
+
+// Tectures Glider
+let bricks_glide = new Glide('.glide', {
+    type: 'carousel',
+    perView: 3
+})
+bricks_glide.on('mount.before', load_bricks)
+bricks_glide.mount()

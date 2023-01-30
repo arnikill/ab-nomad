@@ -28,8 +28,14 @@ h4,
 h5,
 h6 {
   font-family: "Raleway";
-  font-weight: 300;
-  color: rgb(255, 250, 250);
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
 }
 
 p {
@@ -41,4 +47,136 @@ p {
   max-width: 1440px;
   padding: 0 110px;
   display: flex;
+}
+
+section {
+  padding: 100px 0 80px;
+  border-bottom: green;
+  border-bottom-width: 2px;
+  border-style: solid;
+}
+
+header {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+header .wrapper {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-menu-list {
+  display: flex;
+  gap: 0 20px;
+}
+
+.header-menu-list-item {}
+
+.header-menu-list-link {
+  color: white;
+}
+
+.welcome {
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0 20%, rgba(0, 0, 0, 0.1)), url("/assets/img/welcome-img.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.welcome .wrapper {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px 0;
+  color: white;
+}
+
+.welcome-title {}
+
+.welcome-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.welcome-list-item {}
+
+.welcome-button a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  border-width: 0;
+  color: #fff;
+  padding: 10px 20px;
+  background-color: rgb(11, 109, 196);
+}
+
+.welcome-textcols {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.welcome-textcol {}
+
+.info .wrapper {
+  flex-direction: column;
+  align-items: center;
+  gap: 20px 0;
+}
+
+.info-img {
+  margin-bottom: 20px;
+}
+
+.info-title {}
+
+.info-text {
+  max-width: 700px;
+}
+
+.spheres .wrapper {
+  flex-direction: column;
+}
+
+.spheres-title {}
+
+.spheres-tabs {}
+
+.spheres-tab {
+  cursor: pointer;
+  background-color: white;
+  font-size: 25px;
+}
+
+.spheres-tab.active {
+  pointer-events: none;
+  background-color: lightgrey;
+  transition: 0.3s;
+  position: relative;
+}
+
+.spheres-tabscontent {
+  display: none;
+}
+
+.spheres-tabscontent.active {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 20px;
+}
+
+.spheres-tabscontent img {
+  height: 200px;
+  width: 260px;
+}
+
+.tectures .wrapper {}
+
+.glide__slide {
+  display: flex;
+  flex-direction: column;
+  gap: 20px 0;
 }
